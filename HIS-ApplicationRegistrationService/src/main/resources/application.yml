@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: HIS-ApplicationRegistrationService
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql:///his-db
+    username: root
+    password: krushit
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+server:
+  port: 4042
+ar:
+  ssa-web:
+    url: http://localhost:4041/ssa-web-api/find/{ssn};
+  state: california
+usermgmt:
+  messages:
+    save-success: User Application registered with id
+    save-failure: Oops..!! Something went wrong
