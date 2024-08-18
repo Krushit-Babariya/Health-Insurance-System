@@ -1,4 +1,4 @@
-package com.krushit.exception;
+package com.krushit.exception_ar;
 
 public class InvalidSSNException extends Exception {
 

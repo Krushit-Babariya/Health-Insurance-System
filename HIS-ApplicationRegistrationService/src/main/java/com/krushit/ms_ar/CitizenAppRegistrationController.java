@@ -1,4 +1,4 @@
-package com.krushit.ms;
+package com.krushit.ms_ar;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.krushit.model.CitizenRegistrationInputs;
-import com.krushit.service.CitizenAppRegistrationServiceImpl;
+import com.krushit.model_ar.CitizenRegistrationInputs;
+import com.krushit.service_ar.CitizenAppRegistrationServiceImpl;
 
 @RestController
 @RequestMapping("CitizenAR-api")

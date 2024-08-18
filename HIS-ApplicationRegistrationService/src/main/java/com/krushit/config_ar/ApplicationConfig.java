@@ -1,4 +1,4 @@
-package com.krushit.config;
+package com.krushit.config_ar;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

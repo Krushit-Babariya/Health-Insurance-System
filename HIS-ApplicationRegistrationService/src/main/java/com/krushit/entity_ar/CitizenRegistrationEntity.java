@@ -1,4 +1,4 @@
-package com.krushit.entity;
+package com.krushit.entity_ar;
 
 import java.time.LocalDate;
 
@@ -17,7 +17,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "CITIZEN_APPLICATION")
+@Table(name = "HIS_CITIZEN_APPLICATION")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

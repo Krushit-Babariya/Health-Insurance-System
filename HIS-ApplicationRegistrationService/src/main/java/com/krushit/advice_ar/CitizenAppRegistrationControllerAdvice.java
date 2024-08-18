@@ -1,11 +1,11 @@
-package com.krushit.advice;
+package com.krushit.advice_ar;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import com.krushit.exception.InvalidSSNException;
+import com.krushit.exception_ar.InvalidSSNException;
 
 @RestControllerAdvice
 public class CitizenAppRegistrationControllerAdvice {

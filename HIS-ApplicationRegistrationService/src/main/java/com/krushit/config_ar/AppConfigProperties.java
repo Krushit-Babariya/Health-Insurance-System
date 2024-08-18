@@ -1,4 +1,4 @@
-package com.krushit.config;
+package com.krushit.config_ar;
 
 import java.util.Map;
 

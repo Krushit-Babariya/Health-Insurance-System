@@ -1,4 +1,4 @@
-package com.krushit.service;
+package com.krushit.service_ar;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import com.krushit.entity.CitizenRegistrationEntity;
-import com.krushit.exception.InvalidSSNException;
-import com.krushit.model.CitizenRegistrationInputs;
-import com.krushit.repository.ICitizenAppRegistrationRepository;
+import com.krushit.entity_ar.CitizenRegistrationEntity;
+import com.krushit.exception_ar.InvalidSSNException;
+import com.krushit.model_ar.CitizenRegistrationInputs;
+import com.krushit.repository_ar.ICitizenAppRegistrationRepository;
 
 import reactor.core.publisher.Mono;
 

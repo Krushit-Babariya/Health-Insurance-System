@@ -1,4 +1,4 @@
-package com.krushit.model;
+package com.krushit.model_ar;
 
 import java.time.LocalDate;
 

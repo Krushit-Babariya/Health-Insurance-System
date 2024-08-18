@@ -1,4 +1,4 @@
-package com.krushit.constants;
+package com.krushit.constants_ar;
 
 public class UserConstants {
 	public static final String SAVE_SUCCESS = "save-success";
