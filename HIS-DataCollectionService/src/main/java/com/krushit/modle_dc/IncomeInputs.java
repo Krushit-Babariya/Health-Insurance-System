@@ -1,4 +1,4 @@
-package com.krushit.module_dc;
+package com.krushit.modle_dc;
 
 import lombok.Data;
 
