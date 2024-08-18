@@ -25,7 +25,5 @@ public class CitizenRegistrationInputs {
 	private String gender;
 	private Long phoneNo;
 	private Long ssn;
-	private String stateName;
 	private LocalDate dob;
-
 }

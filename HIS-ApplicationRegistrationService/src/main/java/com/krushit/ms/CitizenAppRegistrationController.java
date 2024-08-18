@@ -17,7 +17,7 @@ public class CitizenAppRegistrationController {
 	@Autowired
 	private CitizenAppRegistrationServiceImpl registrationService;
 
-	@PostMapping("/save")
+	/*@PostMapping("/save")
 	public ResponseEntity<String> saveCitizenApplication(@RequestBody CitizenRegistrationInputs inputs) {
 		try {
 			Integer appld = registrationService.registerCitizenApplication(inputs);
@@ -25,5 +25,11 @@ public class CitizenAppRegistrationController {
 		} catch (Exception e) {
 			return new ResponseEntity<>("Citizen must belong to California state", HttpStatus.BAD_REQUEST);
 		}
+	}*/
+
+	@PostMapping("/save")
+	public ResponseEntity<String> saveCitizenApplication(@RequestBody CitizenRegistrationInputs inputs) throws Exception{
+		Integer appld = registrationService.registerCitizenApplication(inputs);
+		return new ResponseEntity<>("Citizen application is registered with ID " + appld, HttpStatus.CREATED);
 	}
 }

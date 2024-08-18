@@ -17,6 +17,12 @@ ar:
   ssa-web:
     url: http://localhost:4041/ssa-web-api/find/{ssn};
   state: california
+#  state: 
+#    - california
+#    - virginia
+#    - texas
+#    - arizona
+
 usermgmt:
   messages:
     save-success: User Application registered with id
