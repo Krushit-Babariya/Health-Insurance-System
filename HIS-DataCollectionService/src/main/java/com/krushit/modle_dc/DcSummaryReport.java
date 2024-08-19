@@ -1,11 +1,14 @@
 package com.krushit.modle_dc;
 
+import java.util.List;
+
 import lombok.Data;
 
 @Data
 public class DcSummaryReport {
-	private PlanSelectionsInput planInputs;
+	private String planName;
 	private EducationInputs eduInputs;
 	private IncomeInputs incomeInputs;
-	private ChildrenInputs childInputs;
+	private List<ChildrenInputs> childInputs;
+	private CitizenRegistrationInputs citizenInputs;
 }

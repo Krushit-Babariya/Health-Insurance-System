@@ -19,7 +19,7 @@ import lombok.Data;
 @Table(name = "HIS_INSAURENCE_PLANS")
 public class PlanEntity {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer planId;
 	@Column(length = 30)
 	private String planName;

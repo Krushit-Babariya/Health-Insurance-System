@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CitizenRegistrationEntity {
 	@Id
-	@SequenceGenerator(name = "citzen_seq_generater", sequenceName = "app_id_sequence", initialValue = 1000, allocationSize = 1)
+	@SequenceGenerator(name = "citzen_seq_generater", sequenceName = "his_app_id_sequence", initialValue = 1000, allocationSize = 1)
 	@GeneratedValue(generator = "citzen_seq_generater", strategy = GenerationType.SEQUENCE)
 	private Integer appId;
 
