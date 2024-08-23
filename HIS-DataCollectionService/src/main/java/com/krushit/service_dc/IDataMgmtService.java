@@ -2,11 +2,11 @@ package com.krushit.service_dc;
 
 import java.util.List;
 
-import com.krushit.modle_dc.ChildrenInputs;
-import com.krushit.modle_dc.DcSummaryReport;
-import com.krushit.modle_dc.EducationInputs;
-import com.krushit.modle_dc.IncomeInputs;
-import com.krushit.modle_dc.PlanSelectionsInput;
+import com.krushit.model_dc.ChildrenInputs;
+import com.krushit.model_dc.DcSummaryReport;
+import com.krushit.model_dc.EducationInputs;
+import com.krushit.model_dc.IncomeInputs;
+import com.krushit.model_dc.PlanSelectionsInput;
 
 public interface IDataMgmtService {
 	public Integer generataCaseNo(Integer appId);

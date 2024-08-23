@@ -13,15 +13,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.krushit.modle_dc.ChildrenInputs;
-import com.krushit.modle_dc.DcSummaryReport;
-import com.krushit.modle_dc.EducationInputs;
-import com.krushit.modle_dc.IncomeInputs;
-import com.krushit.modle_dc.PlanSelectionsInput;
+import com.krushit.model_dc.ChildrenInputs;
+import com.krushit.model_dc.DcSummaryReport;
+import com.krushit.model_dc.EducationInputs;
+import com.krushit.model_dc.IncomeInputs;
+import com.krushit.model_dc.PlanSelectionsInput;
 import com.krushit.service_dc.DataMgmtServiceImpl;
+
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @RequestMapping("/dc-api")
+@Tag(name = "dc-api", description = "Data Collection Module Microservices")
 public class DataCollOperationsController {
 
 	@Autowired
@@ -39,28 +42,29 @@ public class DataCollOperationsController {
 		return new ResponseEntity<Integer>(caseNo, HttpStatus.OK);
 	}
 
-	@PutMapping("/planSelection")
+	@PutMapping("/updatePlanSelection")
 	public ResponseEntity<Integer> savePlanSelection(@RequestBody PlanSelectionsInput planInput) {
 		Integer caseNo = service.savePlanSelection(planInput);
 		return new ResponseEntity<Integer>(caseNo, HttpStatus.OK);
 
 	}
 
-	@PutMapping("/incomeUpdation")
+	@PostMapping("/saveIncome")
 	public ResponseEntity<Integer> saveIncomeDetails(@RequestBody IncomeInputs incomeInput) {
 		Integer caseNo = service.saveIncomeDetails(incomeInput);
-		return new ResponseEntity<Integer>(caseNo, HttpStatus.OK);
+		return new ResponseEntity<Integer>(caseNo, HttpStatus.CREATED);
 	}
 
-	@PutMapping("/educationUpdation")
+	@PostMapping("/saveEducation")
 	public ResponseEntity<Integer> saveEducationDetails(@RequestBody EducationInputs eduInput) {
 		Integer caseNo = service.saveEducationDetails(eduInput);
-		return new ResponseEntity<Integer>(caseNo, HttpStatus.OK);
+		return new ResponseEntity<Integer>(caseNo, HttpStatus.CREATED);
 	}
-
+	
+	@PostMapping("/saveChildren")
 	public ResponseEntity<Integer> saveChildrenDetails(@RequestBody List<ChildrenInputs> childInputsList) {
 		Integer caseNo = service.saveChildrenDetails(childInputsList);
-		return new ResponseEntity<Integer>(caseNo, HttpStatus.OK);
+		return new ResponseEntity<Integer>(caseNo, HttpStatus.CREATED);
 	}
 	
 	@GetMapping("/dcSummary/{caseNo}")

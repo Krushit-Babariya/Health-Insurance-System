@@ -18,6 +18,7 @@ public class DcChildrenEntity {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer childId;
 	private LocalDate childDOB;
+	private String name;
 	private String gender;
 	private Long childSSN;
 	private Integer caseNo;

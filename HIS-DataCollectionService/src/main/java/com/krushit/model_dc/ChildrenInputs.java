@@ -1,4 +1,4 @@
-package com.krushit.modle_dc;
+package com.krushit.model_dc;
 
 import java.time.LocalDate;
 import lombok.Data;
@@ -7,6 +7,7 @@ import lombok.Data;
 public class ChildrenInputs {
 	private Integer childId;
 	private LocalDate childDOB;
+	private String name;
 	private String gender;
 	private Long childSSN;
 	private Integer caseNo;

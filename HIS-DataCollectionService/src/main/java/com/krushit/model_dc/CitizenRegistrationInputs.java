@@ -1,4 +1,4 @@
-package com.krushit.modle_dc;
+package com.krushit.model_dc;
 
 import java.time.LocalDate;
 
