@@ -19,6 +19,7 @@ import com.krushit_ed.entity_ed.DcEducationEntity;
 import com.krushit_ed.entity_ed.DcIncomeEntity;
 import com.krushit_ed.entity_ed.EligibilityDetailsEntity;
 import com.krushit_ed.entity_ed.PlanEntity;
+import com.krushit_ed.exception_ed.PlanAlreadyAppliedException;
 import com.krushit_ed.repository_ed.ICitizenAppRegistrationRepository;
 import com.krushit_ed.repository_ed.ICoTriggerRepository;
 import com.krushit_ed.repository_ed.IDcCaseRepository;
@@ -57,15 +58,6 @@ public class EligibilityDeterminationServiceImpl implements IEligibilityDetermin
 
 	@Override
 	public EligibilityDetailsOutput determineEligibility(Integer caseNo) {
-
-		//get Citizen datails
-		String citizenName = null;
-		Optional<CitizenRegistrationEntity> citizenOpt = citizenRepo.findById(caseNo);
-		if (citizenOpt.isPresent()) {
-			CitizenRegistrationEntity entity = citizenOpt.get();
-			citizenName = entity.getFirstName() + " " + entity.getLastName();
-		}
-
 		//get planid and appid
 		Integer appId = null;
 		Integer planId = null;
@@ -76,6 +68,17 @@ public class EligibilityDeterminationServiceImpl implements IEligibilityDetermin
 			DcCaseEntity entity = opt.get();
 			appId = entity.getAppId();
 			planId = entity.getPlanId();
+		}
+		
+		//get Citizen datails
+		String citizenName = null;
+		Long citizenSSN = null;
+		Optional<CitizenRegistrationEntity> citizenOpt = citizenRepo.findById(appId);
+		if (citizenOpt.isPresent()) {
+			CitizenRegistrationEntity entity = citizenOpt.get();
+			citizenName = entity.getFirstName() + " " + entity.getLastName();
+			citizenSSN = entity.getSsn();
+
 		}
 
 		//get plan name
@@ -90,11 +93,18 @@ public class EligibilityDeterminationServiceImpl implements IEligibilityDetermin
 
 		//set citizen name
 		eligOutput.setHolderName(citizenName);
+		eligOutput.setHolderSSN(citizenSSN);
 
 		//convert to entity object
 		EligibilityDetailsEntity entity = new EligibilityDetailsEntity();
 		BeanUtils.copyProperties(eligOutput, entity);
-		edRepo.save(entity);
+		entity.setCaseNo(caseNo);
+		
+		if(edRepo.existsByCaseNoAndPlanName(caseNo, planName)) {
+			throw new PlanAlreadyAppliedException("Citizen has already applied for this plan.");
+		} else {			
+			edRepo.save(entity);
+		}
 
 		//save triggers
 		CoTriggersEntity triggerEntity = new CoTriggersEntity();
@@ -110,15 +120,9 @@ public class EligibilityDeterminationServiceImpl implements IEligibilityDetermin
 		eligOutput.setPlanName(planName);
 
 		// Fetch income details based on caseNo
-		Optional<DcIncomeEntity> incomeOpt = incomeRepo.findById(caseNo);
-		Double empIncome = null;
-		Double propertyIncome = null;
-
-		if (incomeOpt.isPresent()) {
-			DcIncomeEntity incomeEntity = incomeOpt.get();
-			empIncome = incomeEntity.getEmpIncome();
-			propertyIncome = incomeEntity.getPropertyIncome();
-		}
+		DcIncomeEntity incomeEntity = incomeRepo.findByCaseNo(caseNo);
+		Double empIncome = incomeEntity.getEmpIncome();
+		Double propertyIncome = incomeEntity.getPropertyIncome();
 
 		// Fetch children details if needed
 		List<DcChildrenEntity> listChilds = childRepo.findByCaseNo(caseNo);
@@ -126,7 +130,9 @@ public class EligibilityDeterminationServiceImpl implements IEligibilityDetermin
 		// Determine eligibility based on the plan name
 		switch (planName.toLowerCase()) {
 		case "snap":
+			System.out.println("Emp Income :: " + empIncome + ", Case NO :: " + caseNo);
 			if (empIncome != null && empIncome <= 300) {
+				System.out.println("Emp Income :: " + empIncome);
 				approvePlan(eligOutput, 200.0);
 			} else {
 				denyPlan(eligOutput, "Income should be less than $300");
