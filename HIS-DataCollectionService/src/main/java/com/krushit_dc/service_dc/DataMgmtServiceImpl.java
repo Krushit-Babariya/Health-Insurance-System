@@ -1,4 +1,4 @@
-package com.krushit.service_dc;
+package com.krushit_dc.service_dc;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,24 +9,24 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.krushit.entity_dc.CitizenRegistrationEntity;
-import com.krushit.entity_dc.DcCaseEntity;
-import com.krushit.entity_dc.DcChildrenEntity;
-import com.krushit.entity_dc.DcEducationEntity;
-import com.krushit.entity_dc.DcIncomeEntity;
-import com.krushit.entity_dc.PlanEntity;
-import com.krushit.model_dc.ChildrenInputs;
-import com.krushit.model_dc.CitizenRegistrationInputs;
-import com.krushit.model_dc.DcSummaryReport;
-import com.krushit.model_dc.EducationInputs;
-import com.krushit.model_dc.IncomeInputs;
-import com.krushit.model_dc.PlanSelectionsInput;
-import com.krushit.repository_dc.ICitizenAppRegistrationRepository;
-import com.krushit.repository_dc.IDcCaseRepository;
-import com.krushit.repository_dc.IDcChildrenRepository;
-import com.krushit.repository_dc.IDcEducationRepository;
-import com.krushit.repository_dc.IDcIncomeRepository;
-import com.krushit.repository_dc.IPlanRepository;
+import com.krushit_dc.entity_dc.CitizenRegistrationEntity;
+import com.krushit_dc.entity_dc.DcCaseEntity;
+import com.krushit_dc.entity_dc.DcChildrenEntity;
+import com.krushit_dc.entity_dc.DcEducationEntity;
+import com.krushit_dc.entity_dc.DcIncomeEntity;
+import com.krushit_dc.entity_dc.PlanEntity;
+import com.krushit_dc.model_dc.ChildrenInputs;
+import com.krushit_dc.model_dc.CitizenRegistrationInputs;
+import com.krushit_dc.model_dc.DcSummaryReport;
+import com.krushit_dc.model_dc.EducationInputs;
+import com.krushit_dc.model_dc.IncomeInputs;
+import com.krushit_dc.model_dc.PlanSelectionsInput;
+import com.krushit_dc.repository_dc.ICitizenAppRegistrationRepository;
+import com.krushit_dc.repository_dc.IDcCaseRepository;
+import com.krushit_dc.repository_dc.IDcChildrenRepository;
+import com.krushit_dc.repository_dc.IDcEducationRepository;
+import com.krushit_dc.repository_dc.IDcIncomeRepository;
+import com.krushit_dc.repository_dc.IPlanRepository;
 
 @Service
 public class DataMgmtServiceImpl implements IDataMgmtService {

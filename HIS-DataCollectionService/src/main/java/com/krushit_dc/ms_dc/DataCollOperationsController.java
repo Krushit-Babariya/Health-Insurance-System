@@ -1,4 +1,4 @@
-package com.krushit.ms_dc;
+package com.krushit_dc.ms_dc;
 
 import java.util.List;
 
@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.krushit.model_dc.ChildrenInputs;
-import com.krushit.model_dc.DcSummaryReport;
-import com.krushit.model_dc.EducationInputs;
-import com.krushit.model_dc.IncomeInputs;
-import com.krushit.model_dc.PlanSelectionsInput;
-import com.krushit.service_dc.DataMgmtServiceImpl;
+import com.krushit_dc.model_dc.ChildrenInputs;
+import com.krushit_dc.model_dc.DcSummaryReport;
+import com.krushit_dc.model_dc.EducationInputs;
+import com.krushit_dc.model_dc.IncomeInputs;
+import com.krushit_dc.model_dc.PlanSelectionsInput;
+import com.krushit_dc.service_dc.DataMgmtServiceImpl;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 

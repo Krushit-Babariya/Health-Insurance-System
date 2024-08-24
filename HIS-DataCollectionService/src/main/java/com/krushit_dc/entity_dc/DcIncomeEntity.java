@@ -1,4 +1,4 @@
-package com.krushit.entity_dc;
+package com.krushit_dc.entity_dc;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

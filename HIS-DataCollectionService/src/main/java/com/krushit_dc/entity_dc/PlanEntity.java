@@ -1,4 +1,4 @@
-package com.krushit.entity_dc;
+package com.krushit_dc.entity_dc;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -21,9 +21,11 @@ public class PlanEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer planId;
-	@Column(length = 30)
+	@Column(length = 20)
 	private String planName;
-	@Column(length = 100)
+	@Column(length = 300)
+	private String planFullForm;
+	@Column(length = 300)
 	private String planDescription;
 	@Column(length = 10)
 	private String planMembership;

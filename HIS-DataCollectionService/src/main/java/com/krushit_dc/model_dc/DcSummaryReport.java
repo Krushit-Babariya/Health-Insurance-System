@@ -1,4 +1,4 @@
-package com.krushit.model_dc;
+package com.krushit_dc.model_dc;
 
 import java.util.List;
 

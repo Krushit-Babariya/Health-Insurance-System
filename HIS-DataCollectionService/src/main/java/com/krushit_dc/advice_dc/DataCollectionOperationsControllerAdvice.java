@@ -1,4 +1,4 @@
-package com.krushit.advice_dc;
+package com.krushit_dc.advice_dc;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
