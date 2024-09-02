@@ -22,6 +22,7 @@ public class PlanCategory {
 	@SequenceGenerator(name = "gen1", sequenceName = "cat_seq", initialValue = 2031, allocationSize = 1)
 	@GeneratedValue(generator = "gen1", strategy = GenerationType.SEQUENCE)
 	private Integer category_id;
+	@Column(length = 40)
 	private String category_name;
 
 	@Column(name = "ACTIVE_SW")
