@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +13,13 @@ import org.springframework.stereotype.Service;
 
 import com.krushit.config.AppConfigProperties;
 import com.krushit.constatnts.PlanConstants;
+import com.krushit.entity.CaseWorkerEntity;
 import com.krushit.entity.PlanCategory;
 import com.krushit.entity.PlanEntity;
+import com.krushit.model.CaseWorker;
 import com.krushit.model.CategoryData;
 import com.krushit.model.PlanData;
+import com.krushit.repository.CaseWorkerRepository;
 import com.krushit.repository.IPlanCategoryRepository;
 import com.krushit.repository.IPlanRepository;
 
@@ -27,6 +31,9 @@ public class PlanMgmtServiceImpl implements IPlanMgmtService {
 
 	@Autowired
 	private IPlanCategoryRepository planCategoryRepo;
+
+	@Autowired
+	private CaseWorkerRepository caseWorkerRepository;
 
 	private Map<String, String> map;
 
@@ -42,7 +49,7 @@ public class PlanMgmtServiceImpl implements IPlanMgmtService {
 		return savedEntity != null ? map.get(PlanConstants.SAVE_SUCCESS) + savedEntity.getPlanId()
 				: map.get(PlanConstants.SAVE_FALIURE);
 	}
-	
+
 	@Override
 	public String registerPlanCategory(CategoryData plan) {
 		PlanCategory entity = new PlanCategory();
@@ -66,7 +73,7 @@ public class PlanMgmtServiceImpl implements IPlanMgmtService {
 	public List<PlanData> showAllPlans() {
 		List<PlanEntity> listEntity = planRepo.findAll();
 		List<PlanData> listData = new ArrayList<PlanData>();
-		
+
 		listEntity.forEach(entity -> {
 			PlanData data = new PlanData();
 			BeanUtils.copyProperties(entity, data);
@@ -85,41 +92,40 @@ public class PlanMgmtServiceImpl implements IPlanMgmtService {
 	public String updatePlan(PlanData plan) {
 		PlanEntity entity = new PlanEntity();
 		BeanUtils.copyProperties(plan, entity);
-		
-	    Optional<PlanEntity> existingPlan = planRepo.findById(entity.getPlanId());
-	    if (existingPlan.isPresent()) {
-	        planRepo.save(entity);
-	        return map.get(PlanConstants.UPDATE_SUCCESS) + plan.getPlanId();
-	    } else {
-	        return map.get(PlanConstants.UPDATE_FAILURE);
-	    }
+
+		Optional<PlanEntity> existingPlan = planRepo.findById(entity.getPlanId());
+		if (existingPlan.isPresent()) {
+			planRepo.save(entity);
+			return map.get(PlanConstants.UPDATE_SUCCESS) + plan.getPlanId();
+		} else {
+			return map.get(PlanConstants.UPDATE_FAILURE);
+		}
 	}
 
 	@Override
 	public String deletePlan(Integer planID) {
-	    Optional<PlanEntity> existingPlan = planRepo.findById(planID);
-	    if (existingPlan.isPresent()) {
-	        planRepo.deleteById(planID);
-	        return map.get(PlanConstants.UPDATE_SUCCESS);
-	    } else {
-	        return map.get(PlanConstants.UPDATE_FAILURE);
-	    }
+		Optional<PlanEntity> existingPlan = planRepo.findById(planID);
+		if (existingPlan.isPresent()) {
+			planRepo.deleteById(planID);
+			return map.get(PlanConstants.UPDATE_SUCCESS);
+		} else {
+			return map.get(PlanConstants.UPDATE_FAILURE);
+		}
 	}
 
 	@Override
 	public String changePlanStatus(Integer planID, String status) {
 		Optional<PlanEntity> opt = planRepo.findById(planID);
-	    if (opt.isPresent()) {
-	    	PlanEntity plan = opt.get();
-	    	if(plan.getAvtive_sw().equalsIgnoreCase(status)) {
-	    		return map.get("Plan Status is already ") + status;
-	    	}
-	    	plan.setAvtive_sw(status);
-	    	planRepo.save(plan);
-	        return map.get(PlanConstants.STATUS_CHANGE_SUCCESS) + planID;
-	    } else {
-	        return map.get(PlanConstants.STATUS_CHANGE_FAILURE);
-	    }
+		if (opt.isPresent()) {
+			PlanEntity plan = opt.get();
+			if (plan.getAvtive_sw().equalsIgnoreCase(status)) {
+				return map.get("Plan Status is already ") + status;
+			}
+			plan.setAvtive_sw(status);
+			planRepo.save(plan);
+			return map.get(PlanConstants.STATUS_CHANGE_SUCCESS) + planID;
+		} else {
+			return map.get(PlanConstants.STATUS_CHANGE_FAILURE);
+		}
 	}
-
 }
