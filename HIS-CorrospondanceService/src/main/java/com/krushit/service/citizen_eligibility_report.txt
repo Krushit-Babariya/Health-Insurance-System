@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .email-container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+        }
+        .email-header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+        }
+        .email-body {
+            padding: 20px;
+        }
+        .email-footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 0 0 8px 8px;
+            border-top: 1px solid #dee2e6;
+            font-size: 14px;
+            color: #6c757d;
+        }
+        .email-link {
+            display: inline-block;
+            padding: 10px 20px;
+            color: #fff;
+            background-color: #28a745;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+        .email-table {
+            max-width: 500px;
+            margin: auto;
+            margin-top: 20px;
+        }
+        .email-table td {
+            padding: 8px;
+            border: 1px solid #dee2e6;
+            background-color: #f1f1f1;
+        }
+        .email-table td.value-cell {
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="email-header">
+            <h2>Eligibility Notification</h2>
+        </div>
+        <div class="email-body">
+            <p>Dear <strong>{firstName} {LastName}</strong>,</p>
+            <p>We are pleased to inform you that your application has been processed. Below are the details of your eligibility:</p>
+            
+            <table class="email-table">
+                <tr>
+                    <td><strong>Case Number:</strong></td>
+                    <td class="value-cell">{caseNo}</td>
+                </tr>
+                <tr>
+                    <td><strong>Holder Name:</strong></td>
+                    <td class="value-cell">{holderName}</td>
+                </tr>
+                <tr>
+                    <td><strong>SSN:</strong></td>
+                    <td class="value-cell">{holderSSN}</td>
+                </tr>
+                <tr>
+                    <td><strong>Plan Name:</strong></td>
+                    <td class="value-cell">{planName}</td>
+                </tr>
+                <tr>
+                    <td><strong>Plan Status:</strong></td>
+                    <td class="value-cell">{planStatus}</td>
+                </tr>
+                <tr>
+                    <td><strong>Benefit Amount:</strong></td>
+                    <td class="value-cell">{benifitAmt}</td>
+                </tr>
+                <tr>
+                    <td><strong>Plan Start Date:</strong></td>
+                    <td class="value-cell">{planStartDate}</td>
+                </tr>
+                <tr>
+                    <td><strong>Plan End Date:</strong></td>
+                    <td class="value-cell">{planEndDate}</td>
+                </tr>
+                <tr>
+                    <td><strong>Denial Reason:</strong></td>
+                    <td class="value-cell">{denialReason}</td>
+                </tr>
+            </table>
+
+            <p class="text-center">
+                <a href="{URL}" class="email-link">View Your Application Details</a>
+            </p>
+        </div>
+        <div class="email-footer">
+            <p>Thank you,<br><em>California State Government</em></p>
+        </div>
+    </div>
+</body>
+</html>
